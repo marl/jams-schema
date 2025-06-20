@@ -3,13 +3,13 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema#",
   "title": "Blob",
   "$dynamicAnchor": "nsBlob",
-  "definitions": {
+  "$def": {
     "sparseData": {
       "type": "array",
       "items": {
         "allOf": [
           {
-            "$ref": "../SparseObservation.json"
+            "$ref": "../../jams.json#SparseObservation"
           },
           {
             "properties": {},
@@ -21,7 +21,7 @@
     "denseData": {
       "allOf": [
         {
-          "$ref": "../DenseObservation.json"
+          "$ref": "../../jams.json#DenseObservation"
         },
         {
           "properties": {},
@@ -32,7 +32,7 @@
   },
   "allOf": [
     {
-      "$dynamicRef": "../jams.json#annotationBase"
+      "$dynamicRef": "../../jams.json#annotationBase"
     },
     {
       "type": "object",
@@ -50,10 +50,10 @@
         "data": {
           "oneOf": [
             {
-              "$ref": "#/definitions/sparseData"
+              "$ref": "#/$def/sparseData"
             },
             {
-              "$ref": "#/definitions/denseData"
+              "$ref": "#/$def/denseData"
             }
           ]
         }

@@ -3,7 +3,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema#",
   "title": "TagMedleydbInstruments",
   "$dynamicAnchor": "nsTagMedleydbInstruments",
-  "definitions": {
+  "$def": {
     "valueDef": {
       "enum": [
         "accordion",
@@ -94,12 +94,12 @@
       "items": {
         "allOf": [
           {
-            "$ref": "../SparseObservation.json"
+            "$ref": "../../jams.json#SparseObservation"
           },
           {
             "properties": {
               "value": {
-                "$ref": "#/definitions/valueDef"
+                "$ref": "#/$def/valueDef"
               }
             },
             "required": [
@@ -112,14 +112,14 @@
     "denseData": {
       "allOf": [
         {
-          "$ref": "../DenseObservation.json"
+          "$ref": "../../jams.json#DenseObservation"
         },
         {
           "properties": {
             "value": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/valueDef"
+                "$ref": "#/$def/valueDef"
               }
             }
           },
@@ -132,7 +132,7 @@
   },
   "allOf": [
     {
-      "$dynamicRef": "../jams.json#annotationBase"
+      "$dynamicRef": "../../jams.json#annotationBase"
     },
     {
       "type": "object",
@@ -150,10 +150,10 @@
         "data": {
           "oneOf": [
             {
-              "$ref": "#/definitions/sparseData"
+              "$ref": "#/$def/sparseData"
             },
             {
-              "$ref": "#/definitions/denseData"
+              "$ref": "#/$def/denseData"
             }
           ]
         }

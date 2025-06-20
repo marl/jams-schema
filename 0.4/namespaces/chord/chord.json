@@ -3,7 +3,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema#",
   "title": "Chord",
   "$dynamicAnchor": "nsChord",
-  "definitions": {
+  "$def": {
     "valueDef": {
       "type": "string",
       "pattern": "^((N|X)|(([A-G](b*|#*))((:(maj|min|dim|aug|1|5|sus2|sus4|maj6|min6|7|maj7|min7|dim7|hdim7|minmaj7|aug7|9|maj9|min9|11|maj11|min11|13|maj13|min13)(\\((\\*?((b*|#*)([1-9]|1[0-3]?))(,\\*?((b*|#*)([1-9]|1[0-3]?)))*)\\))?)|(:\\((\\*?((b*|#*)([1-9]|1[0-3]?))(,\\*?((b*|#*)([1-9]|1[0-3]?)))*)\\)))?((/((b*|#*)([1-9]|1[0-3]?)))?)?))$"
@@ -13,12 +13,12 @@
       "items": {
         "allOf": [
           {
-            "$ref": "../SparseObservation.json"
+            "$ref": "../../jams.json#SparseObservation"
           },
           {
             "properties": {
               "value": {
-                "$ref": "#/definitions/valueDef"
+                "$ref": "#/$def/valueDef"
               }
             },
             "required": [
@@ -31,14 +31,14 @@
     "denseData": {
       "allOf": [
         {
-          "$ref": "../DenseObservation.json"
+          "$ref": "../../jams.json#DenseObservation"
         },
         {
           "properties": {
             "value": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/valueDef"
+                "$ref": "#/$def/valueDef"
               }
             }
           },
@@ -51,7 +51,7 @@
   },
   "allOf": [
     {
-      "$dynamicRef": "../jams.json#annotationBase"
+      "$dynamicRef": "../../jams.json#annotationBase"
     },
     {
       "type": "object",
@@ -69,10 +69,10 @@
         "data": {
           "oneOf": [
             {
-              "$ref": "#/definitions/sparseData"
+              "$ref": "#/$def/sparseData"
             },
             {
-              "$ref": "#/definitions/denseData"
+              "$ref": "#/$def/denseData"
             }
           ]
         }

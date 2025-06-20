@@ -3,7 +3,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema#",
   "title": "TagMsdTagtraumCd2",
   "$dynamicAnchor": "nsTagMsdTagtraumCd2",
-  "definitions": {
+  "$def": {
     "valueDef": {
       "enum": [
         "reggae",
@@ -40,15 +40,15 @@
       "items": {
         "allOf": [
           {
-            "$ref": "../SparseObservation.json"
+            "$ref": "../../jams.json#SparseObservation"
           },
           {
             "properties": {
               "value": {
-                "$ref": "#/definitions/valueDef"
+                "$ref": "#/$def/valueDef"
               },
               "confidence": {
-                "$ref": "#/definitions/confidenceDef"
+                "$ref": "#/$def/confidenceDef"
               }
             },
             "required": [
@@ -62,20 +62,20 @@
     "denseData": {
       "allOf": [
         {
-          "$ref": "../DenseObservation.json"
+          "$ref": "../../jams.json#DenseObservation"
         },
         {
           "properties": {
             "value": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/valueDef"
+                "$ref": "#/$def/valueDef"
               }
             },
             "confidence": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/confidenceDef"
+                "$ref": "#/$def/confidenceDef"
               }
             }
           },
@@ -89,7 +89,7 @@
   },
   "allOf": [
     {
-      "$dynamicRef": "../jams.json#annotationBase"
+      "$dynamicRef": "../../jams.json#annotationBase"
     },
     {
       "type": "object",
@@ -107,10 +107,10 @@
         "data": {
           "oneOf": [
             {
-              "$ref": "#/definitions/sparseData"
+              "$ref": "#/$def/sparseData"
             },
             {
-              "$ref": "#/definitions/denseData"
+              "$ref": "#/$def/denseData"
             }
           ]
         }
