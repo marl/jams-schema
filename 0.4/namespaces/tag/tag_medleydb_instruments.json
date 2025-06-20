@@ -1,5 +1,5 @@
 {
-  "$id": "https://marl.github.io/jams-schema/0.4/namespaces/tag_medleydb_instruments.json",
+  "$id": "https://marl.github.io/jams-schema/0.4/namespaces/tag/tag_medleydb_instruments.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema#",
   "title": "TagMedleydbInstruments",
   "$dynamicAnchor": "nsTagMedleydbInstruments",

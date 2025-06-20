@@ -1,5 +1,5 @@
 {
-  "$id": "https://marl.github.io/jams-schema/0.4/namespaces/pattern_jku.json",
+  "$id": "https://marl.github.io/jams-schema/0.4/namespaces/pattern/pattern_jku.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema#",
   "title": "PatternJku",
   "$dynamicAnchor": "nsPatternJku",

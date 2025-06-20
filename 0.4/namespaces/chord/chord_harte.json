@@ -1,5 +1,5 @@
 {
-  "$id": "https://marl.github.io/jams-schema/0.4/namespaces/chord_harte.json",
+  "$id": "https://marl.github.io/jams-schema/0.4/namespaces/chord/chord_harte.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema#",
   "title": "ChordHarte",
   "$dynamicAnchor": "nsChordHarte",

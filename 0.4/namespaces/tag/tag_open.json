@@ -1,5 +1,5 @@
 {
-  "$id": "https://marl.github.io/jams-schema/0.4/namespaces/tag_open.json",
+  "$id": "https://marl.github.io/jams-schema/0.4/namespaces/tag/tag_open.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema#",
   "title": "TagOpen",
   "$dynamicAnchor": "nsTagOpen",

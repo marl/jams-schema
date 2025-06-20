@@ -1,5 +1,5 @@
 {
-  "$id": "https://marl.github.io/jams-schema/0.4/namespaces/segment_salami_function.json",
+  "$id": "https://marl.github.io/jams-schema/0.4/namespaces/segment/segment_salami_function.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema#",
   "title": "SegmentSalamiFunction",
   "$dynamicAnchor": "nsSegmentSalamiFunction",

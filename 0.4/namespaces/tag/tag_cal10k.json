@@ -1,5 +1,5 @@
 {
-  "$id": "https://marl.github.io/jams-schema/0.4/namespaces/tag_cal10k.json",
+  "$id": "https://marl.github.io/jams-schema/0.4/namespaces/tag/tag_cal10k.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema#",
   "title": "TagCal10k",
   "$dynamicAnchor": "nsTagCal10k",

@@ -1,5 +1,5 @@
 {
-  "$id": "https://marl.github.io/jams-schema/0.4/namespaces/chord_roman.json",
+  "$id": "https://marl.github.io/jams-schema/0.4/namespaces/chord/chord_roman.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema#",
   "title": "ChordRoman",
   "$dynamicAnchor": "nsChordRoman",

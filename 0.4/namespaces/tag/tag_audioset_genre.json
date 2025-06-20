@@ -1,5 +1,5 @@
 {
-  "$id": "https://marl.github.io/jams-schema/0.4/namespaces/tag_audioset_genre.json",
+  "$id": "https://marl.github.io/jams-schema/0.4/namespaces/tag/tag_audioset_genre.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema#",
   "title": "TagAudiosetGenre",
   "$dynamicAnchor": "nsTagAudiosetGenre",

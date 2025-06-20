@@ -1,5 +1,5 @@
 {
-  "$id": "https://marl.github.io/jams-schema/0.4/namespaces/vector.json",
+  "$id": "https://marl.github.io/jams-schema/0.4/namespaces/misc/vector.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema#",
   "title": "Vector",
   "$dynamicAnchor": "nsVector",

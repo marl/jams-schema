@@ -1,5 +1,5 @@
 {
-  "$id": "https://marl.github.io/jams-schema/0.4/namespaces/beat_position.json",
+  "$id": "https://marl.github.io/jams-schema/0.4/namespaces/beat/beat_position.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema#",
   "title": "BeatPosition",
   "$dynamicAnchor": "nsBeatPosition",
