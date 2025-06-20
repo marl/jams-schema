@@ -1,0 +1,97 @@
+{
+  "$id": "https://marl.github.io/jams-schema/0.4/namespaces/multi_segment.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema#",
+  "title": "MultiSegment",
+  "$dynamicAnchor": "nsMultiSegment",
+  "definitions": {
+    "valueDef": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "level": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "label",
+        "level"
+      ]
+    },
+    "sparseData": {
+      "type": "array",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "../SparseObservation.json"
+          },
+          {
+            "properties": {
+              "value": {
+                "$ref": "#/definitions/valueDef"
+              }
+            },
+            "required": [
+              "value"
+            ]
+          }
+        ]
+      }
+    },
+    "denseData": {
+      "allOf": [
+        {
+          "$ref": "../DenseObservation.json"
+        },
+        {
+          "properties": {
+            "value": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/valueDef"
+              }
+            }
+          },
+          "required": [
+            "value"
+          ]
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "$dynamicRef": "../jams.json#annotationBase"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "namespace": {
+          "const": "multi_segment"
+        }
+      },
+      "required": [
+        "namespace"
+      ]
+    },
+    {
+      "properties": {
+        "data": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/sparseData"
+            },
+            {
+              "$ref": "#/definitions/denseData"
+            }
+          ]
+        }
+      },
+      "required": [
+        "data"
+      ]
+    }
+  ]
+}

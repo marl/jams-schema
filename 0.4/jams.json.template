@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marl.github.io/jams-schema/0.4/jams.json",
+  "title": "JAMS file",
+  "description": "JSON Annotated Music Specification",
+  "type": "object",
+
+  "properties": {
+    "file_metadata": { "$ref": "#/$defs/FileMetadata" },
+    "annotations": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Annotation" }
+    },
+    "sandbox": { "type": "object" }
+  },
+
+  "unevaluatedProperties": false,
+
+  "$defs": {
+    "FileMetadata": {
+      "type": "object",
+      "title": "File Metadata",
+      "properties": {
+        "identifiers": {
+          "type": "object",
+          "description": "Sandbox for external IDs (echonest, musicbrainz, etc.)"
+        },
+        "artist":   { "type": "string" },
+        "title":    { "type": "string" },
+        "release":  { "type": "string" },
+        "duration": { "type": "number", "minimum": 0 },
+        "jams_version": {
+          "type": "string",
+          "pattern": "^0\\.[2-4]\\.[0-9]+$"
+        }
+      },
+      "required": ["duration","jams_version"]
+    },
+
+    "Curator": {
+      "type": "object",
+      "title": "Curator",
+      "properties": {
+        "name":  { "type": "string" },
+        "email": { "type": "string", "format": "email" }
+      },
+      "required": ["name","email"]
+    },
+
+    "Annotator": {
+      "type": "object",
+      "title": "Annotator",
+      "properties": {
+        "name":  { "type": "string" },
+        "email": { "type": "string", "format": "email" }
+      }
+    },
+
+    "AnnotationMetadata": {
+      "type": "object",
+      "title": "Annotation metadata",
+      "properties": {
+        "corpus":           { "type": "string" },
+        "version":          { "type": ["string","number"] },
+        "curator":          { "$ref": "#/$defs/Curator" },
+        "annotator":        { "$ref": "#/$defs/Annotator" },
+        "annotation_tools": { "type": "string" },
+        "annotation_rules": { "type": "string" },
+        "validation":       { "type": "string" },
+        "data_source":      { "type": "string" }
+      }
+    },
+
+    "SparseObservation": {
+      "type": "object",
+      "title": "SparseObservation",
+      "description": "An observation spanning an interval of time",
+      "properties": {
+        "time": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Start time in seconds"
+        },
+        "duration": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Duration in seconds"
+        },
+        "value": {
+          "description": "Observation value (namespace‐specific schema overrides this)"
+        },
+        "confidence": {
+          "description": "Observation confidence (namespace‐specific schema overrides this)"
+        }
+      },
+      "required": ["time","duration","value","confidence"]
+    },
+
+    "DenseObservation": {
+      "type": "object",
+      "title": "DenseObservation",
+      "description": "Parallel arrays of observations",
+      "properties": {
+        "time": {
+          "type": "array",
+          "items": { "type": "number", "minimum": 0 }
+        },
+        "duration": {
+          "type": "array",
+          "items": { "type": "number", "minimum": 0 }
+        },
+        "value": {
+          "type": "array",
+          "description": "Values array (namespace‐specific schema overrides this)"
+        },
+        "confidence": {
+          "type": "array",
+          "description": "Confidence array (namespace‐specific schema overrides this)"
+        }
+      },
+      "required": ["time","duration","value","confidence"]
+    },
+
+    "SparseObservationList": {
+      "type": "array",
+      "title": "Sparse Observation List",
+      "items": { "$ref": "#/$defs/SparseObservation" }
+    },
+
+    "Annotation": {
+      "$dynamicAnchor": "annotationBase",
+      "type": "object",
+      "title": "Annotation",
+      "properties": {
+        "annotation_metadata": { "$ref": "#/$defs/AnnotationMetadata" },
+        "namespace":          { "type": "string" },
+        "data": {
+          "oneOf": [
+            { "$ref": "#/$defs/SparseObservationList" },
+            { "$ref": "#/$defs/DenseObservation" }
+          ]
+        },
+        "time":     { "type": ["number","null"], "minimum": 0 },
+        "duration": { "type": ["number","null"], "minimum": 0 },
+        "sandbox":  { "type": "object" }
+      },
+      "required": ["annotation_metadata","namespace","data"]
+    }
+  }
+}

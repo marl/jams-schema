@@ -1,0 +1,155 @@
+{
+  "$id": "https://marl.github.io/jams-schema/0.4/namespaces/segment_tut.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema#",
+  "title": "SegmentTut",
+  "$dynamicAnchor": "nsSegmentTut",
+  "definitions": {
+    "valueDef": {
+      "enum": [
+        "Break",
+        "Bridge",
+        "BridgeA",
+        "BridgeB",
+        "BridgeC",
+        "Close",
+        "Closing",
+        "GuitarS",
+        "Intro",
+        "MR",
+        "Out",
+        "Outro",
+        "OutroS",
+        "Outro_",
+        "Refrain",
+        "Refrain+Coda",
+        "RefrainA",
+        "RefrainB",
+        "RefrainL",
+        "RefrainO",
+        "RefrainS",
+        "Si",
+        "Solo(ver+ref)",
+        "Verse",
+        "VerseA",
+        "VerseAS",
+        "VerseB",
+        "VerseC",
+        "VerseH",
+        "VerseHS",
+        "VerseO",
+        "VerseS",
+        "break",
+        "break(intro)",
+        "breakS",
+        "bridge",
+        "bridgeA",
+        "bridgeAS",
+        "bridgeB",
+        "bridgeBS",
+        "bridgeH",
+        "bridgeS",
+        "improI",
+        "improV",
+        "interlude",
+        "interludeA",
+        "interludeB",
+        "intro",
+        "introB",
+        "introH",
+        "long_connector",
+        "outro",
+        "outroA",
+        "outroB",
+        "refrain",
+        "refrainA",
+        "refrainB",
+        "refrainS",
+        "short_connector",
+        "silence",
+        "verse",
+        "verseA",
+        "verseB",
+        "verseBS",
+        "verseC",
+        "verseH",
+        "verseHS",
+        "verseI",
+        "verseS",
+        "verseV"
+      ]
+    },
+    "sparseData": {
+      "type": "array",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "../SparseObservation.json"
+          },
+          {
+            "properties": {
+              "value": {
+                "$ref": "#/definitions/valueDef"
+              }
+            },
+            "required": [
+              "value"
+            ]
+          }
+        ]
+      }
+    },
+    "denseData": {
+      "allOf": [
+        {
+          "$ref": "../DenseObservation.json"
+        },
+        {
+          "properties": {
+            "value": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/valueDef"
+              }
+            }
+          },
+          "required": [
+            "value"
+          ]
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "$dynamicRef": "../jams.json#annotationBase"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "namespace": {
+          "const": "segment_tut"
+        }
+      },
+      "required": [
+        "namespace"
+      ]
+    },
+    {
+      "properties": {
+        "data": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/sparseData"
+            },
+            {
+              "$ref": "#/definitions/denseData"
+            }
+          ]
+        }
+      },
+      "required": [
+        "data"
+      ]
+    }
+  ]
+}

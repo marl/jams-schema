@@ -1,0 +1,101 @@
+{
+  "$id": "https://marl.github.io/jams-schema/0.4/namespaces/tempo.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema#",
+  "title": "Tempo",
+  "$dynamicAnchor": "nsTempo",
+  "definitions": {
+    "valueDef": {
+      "type": "number",
+      "minimum": 0
+    },
+    "confidenceDef": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1.0
+    },
+    "sparseData": {
+      "type": "array",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "../SparseObservation.json"
+          },
+          {
+            "properties": {
+              "value": {
+                "$ref": "#/definitions/valueDef"
+              },
+              "confidence": {
+                "$ref": "#/definitions/confidenceDef"
+              }
+            },
+            "required": [
+              "value",
+              "confidence"
+            ]
+          }
+        ]
+      }
+    },
+    "denseData": {
+      "allOf": [
+        {
+          "$ref": "../DenseObservation.json"
+        },
+        {
+          "properties": {
+            "value": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/valueDef"
+              }
+            },
+            "confidence": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/confidenceDef"
+              }
+            }
+          },
+          "required": [
+            "value",
+            "confidence"
+          ]
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "$dynamicRef": "../jams.json#annotationBase"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "namespace": {
+          "const": "tempo"
+        }
+      },
+      "required": [
+        "namespace"
+      ]
+    },
+    {
+      "properties": {
+        "data": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/sparseData"
+            },
+            {
+              "$ref": "#/definitions/denseData"
+            }
+          ]
+        }
+      },
+      "required": [
+        "data"
+      ]
+    }
+  ]
+}

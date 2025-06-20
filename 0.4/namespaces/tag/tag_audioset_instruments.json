@@ -1,0 +1,176 @@
+{
+  "$id": "https://marl.github.io/jams-schema/0.4/namespaces/tag_audioset_instruments.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema#",
+  "title": "TagAudiosetInstruments",
+  "$dynamicAnchor": "nsTagAudiosetInstruments",
+  "definitions": {
+    "valueDef": {
+      "enum": [
+        "Accordion",
+        "Acoustic guitar",
+        "Alto saxophone",
+        "Bagpipes",
+        "Banjo",
+        "Bass (instrument role)",
+        "Bass drum",
+        "Bass guitar",
+        "Bassoon",
+        "Bell",
+        "Bicycle bell",
+        "Bowed string instrument",
+        "Brass instrument",
+        "Bugle",
+        "Cello",
+        "Change ringing (campanology)",
+        "Chime",
+        "Choir",
+        "Church bell",
+        "Clarinet",
+        "Clavinet",
+        "Cornet",
+        "Cowbell",
+        "Crash cymbal",
+        "Cymbal",
+        "Didgeridoo",
+        "Double bass",
+        "Drum",
+        "Drum kit",
+        "Drum machine",
+        "Drum roll",
+        "Electric guitar",
+        "Electric piano",
+        "Electronic organ",
+        "Flute",
+        "French horn",
+        "Glockenspiel",
+        "Gong",
+        "Guitar",
+        "Hammond organ",
+        "Harmonica",
+        "Harp",
+        "Harpsichord",
+        "Hi-hat",
+        "Jingle bell",
+        "Keyboard (musical)",
+        "Mallet percussion",
+        "Mandolin",
+        "Maraca",
+        "Marimba, xylophone",
+        "Mellotron",
+        "Musical ensemble",
+        "Oboe",
+        "Orchestra",
+        "Organ",
+        "Percussion",
+        "Piano",
+        "Pizzicato",
+        "Plucked string instrument",
+        "Rattle (instrument)",
+        "Rhodes piano",
+        "Rimshot",
+        "Sampler",
+        "Saxophone",
+        "Scratching (performance technique)",
+        "Shofar",
+        "Singing bowl",
+        "Sitar",
+        "Snare drum",
+        "Soprano saxophone",
+        "Steel guitar, slide guitar",
+        "Steelpan",
+        "String section",
+        "Strum",
+        "Synthesizer",
+        "Tabla",
+        "Tambourine",
+        "Tapping (guitar technique)",
+        "Theremin",
+        "Timpani",
+        "Trombone",
+        "Trumpet",
+        "Tubular bells",
+        "Tuning fork",
+        "Ukulele",
+        "Vibraphone",
+        "Violin, fiddle",
+        "Wind chime",
+        "Wind instrument, woodwind instrument",
+        "Wood block",
+        "Zither"
+      ]
+    },
+    "sparseData": {
+      "type": "array",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "../SparseObservation.json"
+          },
+          {
+            "properties": {
+              "value": {
+                "$ref": "#/definitions/valueDef"
+              }
+            },
+            "required": [
+              "value"
+            ]
+          }
+        ]
+      }
+    },
+    "denseData": {
+      "allOf": [
+        {
+          "$ref": "../DenseObservation.json"
+        },
+        {
+          "properties": {
+            "value": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/valueDef"
+              }
+            }
+          },
+          "required": [
+            "value"
+          ]
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "$dynamicRef": "../jams.json#annotationBase"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "namespace": {
+          "const": "tag_audioset_instruments"
+        }
+      },
+      "required": [
+        "namespace"
+      ]
+    },
+    {
+      "properties": {
+        "data": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/sparseData"
+            },
+            {
+              "$ref": "#/definitions/denseData"
+            }
+          ]
+        }
+      },
+      "required": [
+        "data"
+      ]
+    }
+  ]
+}

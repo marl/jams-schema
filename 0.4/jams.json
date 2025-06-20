@@ -1,0 +1,362 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://marl.github.io/jams-schema/0.4/jams.json",
+  "title": "JAMS file",
+  "description": "JSON Annotated Music Specification",
+  "type": "object",
+  "properties": {
+    "file_metadata": {
+      "$ref": "#/$defs/FileMetadata"
+    },
+    "annotations": {
+      "type": "array",
+      "items": {
+        "allOf": [
+          {
+            "$dynamicRef": "https://marl.github.io/jams-schema/0.4/jams.json#annotationBase"
+          },
+          {
+            "oneOf": [
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/beat.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/beat_position.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/blob.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/chord.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/chord_harte.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/chord_roman.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/key_mode.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/lyrics.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/lyrics_bow.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/mood_thayer.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/multi_segment.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/note_hz.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/note_midi.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/onset.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/pattern_jku.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/pitch_class.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/pitch_contour.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/pitch_hz.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/pitch_midi.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/scaper.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/segment_open.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/segment_salami_function.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/segment_salami_lower.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/segment_salami_upper.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/segment_tut.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/tag_audioset.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/tag_audioset_genre.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/tag_audioset_instruments.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/tag_cal10k.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/tag_cal500.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/tag_fma_genre.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/tag_fma_subgenre.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/tag_gtzan.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/tag_medleydb_instruments.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/tag_msd_tagtraum_cd1.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/tag_msd_tagtraum_cd2.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/tag_open.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/tag_urbansound.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/tempo.json"
+              },
+              {
+                "$ref": "https://marl.github.io/jams-schema/0.4/namespaces/vector.json"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "sandbox": {
+      "type": "object"
+    }
+  },
+  "unevaluatedProperties": false,
+  "$defs": {
+    "FileMetadata": {
+      "type": "object",
+      "title": "File Metadata",
+      "properties": {
+        "identifiers": {
+          "type": "object",
+          "description": "Sandbox for external IDs (echonest, musicbrainz, etc.)"
+        },
+        "artist": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "release": {
+          "type": "string"
+        },
+        "duration": {
+          "type": "number",
+          "minimum": 0
+        },
+        "jams_version": {
+          "type": "string",
+          "pattern": "^0\\.[2-4]\\.[0-9]+$"
+        }
+      },
+      "required": [
+        "duration",
+        "jams_version"
+      ]
+    },
+    "Curator": {
+      "type": "object",
+      "title": "Curator",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        }
+      },
+      "required": [
+        "name",
+        "email"
+      ]
+    },
+    "Annotator": {
+      "type": "object",
+      "title": "Annotator",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        }
+      }
+    },
+    "AnnotationMetadata": {
+      "type": "object",
+      "title": "Annotation metadata",
+      "properties": {
+        "corpus": {
+          "type": "string"
+        },
+        "version": {
+          "type": [
+            "string",
+            "number"
+          ]
+        },
+        "curator": {
+          "$ref": "#/$defs/Curator"
+        },
+        "annotator": {
+          "$ref": "#/$defs/Annotator"
+        },
+        "annotation_tools": {
+          "type": "string"
+        },
+        "annotation_rules": {
+          "type": "string"
+        },
+        "validation": {
+          "type": "string"
+        },
+        "data_source": {
+          "type": "string"
+        }
+      }
+    },
+    "SparseObservation": {
+      "type": "object",
+      "title": "SparseObservation",
+      "description": "An observation spanning an interval of time",
+      "properties": {
+        "time": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Start time in seconds"
+        },
+        "duration": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Duration in seconds"
+        },
+        "value": {
+          "description": "Observation value (namespace\u2010specific schema overrides this)"
+        },
+        "confidence": {
+          "description": "Observation confidence (namespace\u2010specific schema overrides this)"
+        }
+      },
+      "required": [
+        "time",
+        "duration",
+        "value",
+        "confidence"
+      ]
+    },
+    "DenseObservation": {
+      "type": "object",
+      "title": "DenseObservation",
+      "description": "Parallel arrays of observations",
+      "properties": {
+        "time": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "duration": {
+          "type": "array",
+          "items": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "value": {
+          "type": "array",
+          "description": "Values array (namespace\u2010specific schema overrides this)"
+        },
+        "confidence": {
+          "type": "array",
+          "description": "Confidence array (namespace\u2010specific schema overrides this)"
+        }
+      },
+      "required": [
+        "time",
+        "duration",
+        "value",
+        "confidence"
+      ]
+    },
+    "SparseObservationList": {
+      "type": "array",
+      "title": "Sparse Observation List",
+      "items": {
+        "$ref": "#/$defs/SparseObservation"
+      }
+    },
+    "Annotation": {
+      "$dynamicAnchor": "annotationBase",
+      "type": "object",
+      "title": "Annotation",
+      "properties": {
+        "annotation_metadata": {
+          "$ref": "#/$defs/AnnotationMetadata"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "data": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/SparseObservationList"
+            },
+            {
+              "$ref": "#/$defs/DenseObservation"
+            }
+          ]
+        },
+        "time": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "duration": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "sandbox": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "annotation_metadata",
+        "namespace",
+        "data"
+      ]
+    }
+  }
+}

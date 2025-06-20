@@ -1,0 +1,84 @@
+{
+  "$id": "https://marl.github.io/jams-schema/0.4/namespaces/pitch_hz.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema#",
+  "title": "PitchHz",
+  "$dynamicAnchor": "nsPitchHz",
+  "definitions": {
+    "valueDef": {
+      "type": "number"
+    },
+    "sparseData": {
+      "type": "array",
+      "items": {
+        "allOf": [
+          {
+            "$ref": "../SparseObservation.json"
+          },
+          {
+            "properties": {
+              "value": {
+                "$ref": "#/definitions/valueDef"
+              }
+            },
+            "required": [
+              "value"
+            ]
+          }
+        ]
+      }
+    },
+    "denseData": {
+      "allOf": [
+        {
+          "$ref": "../DenseObservation.json"
+        },
+        {
+          "properties": {
+            "value": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/valueDef"
+              }
+            }
+          },
+          "required": [
+            "value"
+          ]
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "$dynamicRef": "../jams.json#annotationBase"
+    },
+    {
+      "type": "object",
+      "properties": {
+        "namespace": {
+          "const": "pitch_hz"
+        }
+      },
+      "required": [
+        "namespace"
+      ]
+    },
+    {
+      "properties": {
+        "data": {
+          "oneOf": [
+            {
+              "$ref": "#/definitions/sparseData"
+            },
+            {
+              "$ref": "#/definitions/denseData"
+            }
+          ]
+        }
+      },
+      "required": [
+        "data"
+      ]
+    }
+  ]
+}
