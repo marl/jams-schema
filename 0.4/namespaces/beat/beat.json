@@ -19,7 +19,7 @@
       "items": {
         "allOf": [
           {
-            "$ref": "jams.json#SparseObservation"
+            "$ref": "../../jams.json#SparseObservation"
           },
           {
             "properties": {
@@ -37,7 +37,7 @@
     "denseData": {
       "allOf": [
         {
-          "$ref": "jams.json#DenseObservation"
+          "$ref": "../../jams.json#DenseObservation"
         },
         {
           "properties": {
@@ -57,7 +57,7 @@
   },
   "allOf": [
     {
-      "$dynamicRef": "jams.json#annotationBase"
+      "$dynamicRef": "../../jams.json#annotationBase"
     },
     {
       "type": "object",
